@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PrivateEvents</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,7 +10,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="bg-primary">
+    <% if flash[:notice] %>
+      <p class="alert alert-success mb-0"><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p class="alert alert-danger mb-0"><%= alert %></p>
+    <% end %>
+
+    <% render partial: 'shared/navbar' %>
+
     <%= yield %>
   </body>
 </html>

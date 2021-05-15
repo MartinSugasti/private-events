@@ -14,5 +14,18 @@
  *= require_self
  */
 
-@import "@fortawesome/fontawesome-free";
-@import "bootstrap/scss/bootstrap";
+@import 'variables';
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/brands';
+
+@import 'global';
+@import 'mixins';
+@import 'login';
