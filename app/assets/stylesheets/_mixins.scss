@@ -1,0 +1,15 @@
+@mixin for-xs-screen {
+  @media (max-width: 575px) { @content; }
+}
+@mixin for-sm-screen {
+  @media (min-width: 576px) { @content; }
+}
+@mixin for-md-screen {
+  @media (min-width: 768px) { @content; }
+}
+@mixin for-lg-screen {
+  @media (min-width: 992px) { @content; }
+}
+@mixin for-xl-screen {
+  @media (min-width: 1200px) { @content; }
+}

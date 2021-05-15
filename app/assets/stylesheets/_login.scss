@@ -1,0 +1,31 @@
+.login-container {
+  background-image: url(image_path('2.jpg'));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login-square {
+  max-width: 500px;
+}
+
+.login-logo {
+  max-width: 280px;
+}
+
+.login-button {
+  min-width: 70%;
+}
+
+.email-field {
+  background: url(image_path('envelope-regular.svg')) 95%/22px no-repeat;
+}
+
+.email-field:focus-visible {
+  outline-color: theme-color('secondary') !important;
+}
+
+.password-field {
+  background: url(image_path('lock-solid.svg')) 95%/22px no-repeat;
+}

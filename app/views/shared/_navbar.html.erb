@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand shadow bg-secondary">
+  <%= link_to root_path, class: 'd-flex align-items-center h1 my-1 text-primary text-decoration-none' do %>
+    <i class="far fa-calendar-check mr-3"></i>
+    <div>Private Events</div>
+  <% end %>
+
+  <ul class="navbar-nav ml-auto mr-3">
+    <% if user_signed_in? %>
+
+    <% else %>
+      <%= link_to 'Log in', new_user_session_path, class: 'h3 my-1 text-primary text-decoration-none' %>
+    <% end %>
+  </ul>
+</nav>
