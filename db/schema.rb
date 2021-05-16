@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_194229) do
+ActiveRecord::Schema.define(version: 2021_05_16_130956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "location"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.text "description"
+    t.bigint "creator_id"
+    t.index ["creator_id"], name: "index_events_on_creator_id"
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.bigint "guest_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_invitations_on_event_id"
+    t.index ["guest_id"], name: "index_invitations_on_guest_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +41,12 @@ ActiveRecord::Schema.define(version: 2021_05_12_194229) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users", column: "creator_id"
+  add_foreign_key "invitations", "events"
+  add_foreign_key "invitations", "users", column: "guest_id"
 end
