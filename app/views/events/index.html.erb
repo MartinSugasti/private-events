@@ -1,2 +1,16 @@
-<h1 class="mt-5" id="hello-title">Hello there</h1>
-<i class="fab fa-500px"></i>
+<div class="events-background d-flex">
+  <div class="row m-5">
+    <% @events.each do |event| %>
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="card shadow rounded">
+          <div class="card-body">
+            <div class="h3 card-title"><%= event.title %></div>
+            <p class="card-text"><%= event.location %></p>
+            <p class="card-text"><%= event.start_at.strftime('%b %e, %Y') %></p>
+            <p class="card-text"><%= event.description %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

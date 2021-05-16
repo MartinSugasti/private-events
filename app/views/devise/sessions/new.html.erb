@@ -1,11 +1,12 @@
-<div class="login-container d-flex justify-content-center align-items-center">
+<div class="login-background d-flex justify-content-center align-items-center">
   <div class="p-5 bg-primary rounded login-square">
     <div class="text-center m-auto w-90">
       <h1 class="px-3 mb-3 login-logo text-secondary">Private Events</h1>
+      <p class="text-secondary">Sign up</p>
     </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field mt-5 form-group form-icons">
+      <div class="field mt-3 form-group form-icons">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'pl-2 py-3 bg-primary rounded w-100 border email-field pr-5' %>
       </div>
 
