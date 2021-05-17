@@ -1,13 +1,13 @@
-<div class="events-background d-flex">
-  <div class="row m-5">
+<div class="container-fluid events-background d-flex">
+  <div class="row mt-5">
     <% @events.each do |event| %>
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card shadow rounded">
+      <div class="col-12 col-sm-6 col-md-4 align-items-stretch mb-3">
+        <div class="card text-center shadow rounded h-100">
           <div class="card-body">
             <div class="h3 card-title"><%= event.title %></div>
-            <p class="card-text"><%= event.location %></p>
-            <p class="card-text"><%= event.start_at.strftime('%b %e, %Y') %></p>
-            <p class="card-text"><%= event.description %></p>
+            <p class="card-subtitle mt-1"><%= event.location %></p>
+            <p class="card-subtitle mt-1"><%= event.start_at.strftime('%b %e, %Y') %></p>
+            <p class="card-text mt-3"><%= event.description[0..100].strip %><%= event.description.length > 100 ? '...' : '' %></p>
           </div>
         </div>
       </div>
