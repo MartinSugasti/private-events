@@ -1,0 +1,16 @@
+.edit-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+
+.event-form-field:focus-visible {
+  outline-color: theme-color('secondary') !important;
+}
+
+.checkboxes-container {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+}

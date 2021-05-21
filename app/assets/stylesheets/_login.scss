@@ -25,3 +25,7 @@
 .password-field {
   background: url(image_path('lock-solid.svg')) 95%/22px no-repeat;
 }
+
+.password-field:focus-visible {
+  outline-color: theme-color('secondary') !important;
+}

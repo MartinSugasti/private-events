@@ -1,0 +1,45 @@
+<div class="container-fluid edit-event-background d-flex align-items-center justify-content-center">
+  <div class="card text-center shadow rounded mx-2 w-50 my-5">
+    <div class="card-body">
+      <div class="card-title">
+        <span class="h1">Edit your event</span>
+      </div>
+      <%= form_with model: @event, local: true, class: 'mt-5' do |form| %>
+        <div class="align-items-center justify-content-center mt-4 mx-5">
+          <i class="fas fa-signature fa-2x"></i>
+          <%= form.text_field :title, placeholder: 'Title', class: 'mt-3 p-3 rounded w-100 border event-form-field' %>
+        </div>
+        <div class="align-items-center justify-content-center mt-4 mx-5">
+          <i class="fas fa-map-marker-alt fa-2x"></i>
+          <%= form.text_field :location, placeholder: 'Location', class: 'mt-3 p-3 rounded w-100 border event-form-field' %>
+        </div>
+
+        <div class="align-items-center justify-content-center mt-4 mx-5">
+          <i class="far fa-calendar-alt fa-2x"></i>
+          <%= form.datetime_field :start_at, class: 'mt-3 p-3 rounded w-100 border event-form-field' %>
+        </div>
+
+        <div class="align-items-center justify-content-center mt-4 mx-5">
+          <i class="fas fa-info-circle fa-2x"></i>
+          <%= form.text_area :description, placeholder: 'Describe the event...', class:'mt-3 rounded w-100 border event-form-field', rows: 8 %>
+        </div>
+
+        <div class="align-items-center justify-content-center mt-4 mx-5">
+          <i class="fas fa-users fa-2x mb-3"></i>
+          <div class="checkboxes-container rounded border m-auto">
+            <%= form.fields_for :invitations do |invitation_form| %>
+              <%= invitation_form.collection_check_boxes :guest_ids, @guests, :id, :username, { checked: @event.guests.ids }, html_options: { class: 'mt-5' } do |b| %>
+                <div class="mt-1">
+                  <%= b.check_box  %>
+                  <%= b.label %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <%= form.submit class: 'h6 mt-5 mb-4 rounded px-5 py-3 bg-secondary text-white' %>
+      <% end %>
+    </div>
+  </div>
+</div>
