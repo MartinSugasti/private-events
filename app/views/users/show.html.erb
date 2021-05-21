@@ -1,6 +1,9 @@
-<div class="user-background">
+<div class="user-background pt-5">
+  <div class="container-fluid text-center">
+    <h1 class="text-secondary card py-2">Created events</h1>
+  </div>
   <div class="container-fluid d-flex">
-    <div class="row mt-5">
+    <div class="row mt-2">
       <% current_user.created_events.each do |event| %>
         <%= link_to event_path(event), class: 'event-card text-secondary text-decoration-none col-12 col-sm-6 col-md-4 align-items-stretch mb-3' do %>
           <div class="card text-center shadow rounded h-100">
@@ -17,10 +20,14 @@
     </div>
   </div>
 
+  <div class="container-fluid text-center mt-5">
+    <h1 class="text-secondary card py-2">Guest events</h1>
+  </div>
   <div class="container-fluid d-flex">
-    <div class="row mt-5">
-      <% current_user.guest_events.each do |event| %>
-        <%= link_to event_path(event), class: 'event-card text-secondary text-decoration-none col-12 col-sm-6 col-md-4 align-items-stretch mb-3' do %>
+    <div class="row mt-2">
+      <% current_user.invitations.each do |invitation| %>
+        <% event = invitation.event %>
+        <%= link_to event_path(event), class: 'event-card guest-event text-secondary text-decoration-none col-12 col-sm-6 col-md-4 align-items-stretch mb-3' do %>
           <div class="card text-center shadow rounded h-100">
             <div class="card-body">
               <div class="h3 card-title"><%= event.title %></div>
@@ -28,6 +35,15 @@
               <p class="card-subtitle mt-1"><%= event.start_at.strftime('%b %e, %Y') %></p>
               <p class="card-subtitle mt-2"><i class="fas fa-users"></i> <%= event.invitations.accepted.count %></p>
               <p class="card-text mt-3"><%= event.description[0..100].strip %><%= event.description.length > 100 ? '...' : '' %></p>
+              <div class="">
+                <% if invitation.accepted? %>
+                  <i class="fas fa-check fa-3x text-success ml-1"></i>
+                <% elsif invitation.declined? %>
+                  <i class="fas fa-times fa-3x text-danger ml-1"></i>
+                <% else %>
+                  <i class="fas fa-question fa-2x ml-1"></i>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
