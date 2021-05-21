@@ -5,4 +5,8 @@
 .event-card {
   height: 250px;
   overflow: hidden;
+
+  &.guest-event {
+    height: 280px;
+  }
 }

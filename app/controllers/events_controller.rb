@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :possible_guests, only: [:new, :edit]
 
   def index
-    @events = Event.all
+    @events = Event.all.order(:start_at).reverse_order
   end
 
   def show
