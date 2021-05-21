@@ -10,6 +10,14 @@
         <%= link_to 'Events', root_path, class: 'h3 my-1 text-primary text-decoration-none' %>
       </li>
 
+      <li class="align-items-center d-flex nav-item mr-4">
+        <%= link_to 'My Events', root_path, class: 'h3 my-1 text-primary text-decoration-none' %>
+      </li>
+
+      <li class="align-items-center d-flex nav-item mr-4">
+        <%= link_to 'New Event', new_event_path, class: 'h3 my-1 text-primary text-decoration-none' %>
+      </li>
+
       <li class="align-items-center d-flex nav-item">
         <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'h3 my-1 text-primary text-decoration-none' %>
       </li>
@@ -17,7 +25,6 @@
       <% if false %>
       <li class="nav-item dropdown">
         <a class="nav-link text-light" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%# image_tag "profile.jpeg", class: 'navbar-profile-picture rounded-circle mr-2' %>
           <span class="d-none d-lg-inline text-gray-600 small"><%= current_user.email %></span>
         </a>
 

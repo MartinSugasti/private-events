@@ -1,0 +1,45 @@
+<div class="container-fluid event-background d-flex align-items-center justify-content-center">
+  <div class="card text-center shadow rounded mx-2 w-80">
+    <div class="card-body">
+      <div class="card-title">
+        <span class="h1 mr-2"><%= @event.title %></span>
+
+        <% if @event.creator.id.equal?(current_user.id) %>
+          <%= link_to edit_event_path(@event), class: 'edit-icon' do %>
+            <i class="fas fa-edit text-secondary"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="align-items-center d-flex justify-content-center mt-2">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3 class="card-subtitle ml-2 mt-0"><%= @event.location %></h3>
+      </div>
+
+      <div class="align-items-center d-flex justify-content-center mt-2">
+        <i class="far fa-calendar-alt"></i>
+        <h3 class="card-subtitle ml-2 mt-0"><%= @event.start_at.strftime('%b %e, %Y') %></h3>
+      </div>
+
+      <p class="card-text mt-3"><%= @event.description %></p>
+
+      <div class="align-items-center mt-5">
+        <i class="fas fa-users fa-3x mb-3"></i>
+        <div class="checkboxes-container rounded border m-auto p-2">
+          <% @event.invitations[0..9].each do |invitation| %>
+            <h6>
+              <%= invitation.guest.username %>
+              <% if invitation.accepted? %>
+                <i class="fas fa-check text-success ml-1"></i>
+              <% elsif invitation.declined? %>
+                <i class="fas fa-times text-danger ml-1"></i>
+              <% else %>
+                <i class="fas fa-question ml-1"></i>
+              <% end %>
+            </h6>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
