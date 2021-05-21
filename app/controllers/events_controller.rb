@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @invitation = @event.invitations.find_by(guest_id: current_user&.id)
   end
 
   def new
@@ -64,7 +65,7 @@ class EventsController < ApplicationController
   end
 
   def possible_guests
-    @guests = User.except(current_user)
+    @guests = User.where.not(id: current_user.id)
   end
 
   def owner_user?

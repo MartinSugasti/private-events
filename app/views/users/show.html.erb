@@ -1,2 +1,37 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="user-background">
+  <div class="container-fluid d-flex">
+    <div class="row mt-5">
+      <% current_user.created_events.each do |event| %>
+        <%= link_to event_path(event), class: 'event-card text-secondary text-decoration-none col-12 col-sm-6 col-md-4 align-items-stretch mb-3' do %>
+          <div class="card text-center shadow rounded h-100">
+            <div class="card-body">
+              <div class="h3 card-title"><%= event.title %></div>
+              <p class="card-subtitle mt-1"><%= event.location %></p>
+              <p class="card-subtitle mt-1"><%= event.start_at.strftime('%b %e, %Y') %></p>
+              <p class="card-subtitle mt-2"><i class="fas fa-users"></i> <%= event.invitations.accepted.count %></p>
+              <p class="card-text mt-3"><%= event.description[0..100].strip %><%= event.description.length > 100 ? '...' : '' %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container-fluid d-flex">
+    <div class="row mt-5">
+      <% current_user.guest_events.each do |event| %>
+        <%= link_to event_path(event), class: 'event-card text-secondary text-decoration-none col-12 col-sm-6 col-md-4 align-items-stretch mb-3' do %>
+          <div class="card text-center shadow rounded h-100">
+            <div class="card-body">
+              <div class="h3 card-title"><%= event.title %></div>
+              <p class="card-subtitle mt-1"><%= event.location %></p>
+              <p class="card-subtitle mt-1"><%= event.start_at.strftime('%b %e, %Y') %></p>
+              <p class="card-subtitle mt-2"><i class="fas fa-users"></i> <%= event.invitations.accepted.count %></p>
+              <p class="card-text mt-3"><%= event.description[0..100].strip %><%= event.description.length > 100 ? '...' : '' %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
