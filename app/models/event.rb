@@ -25,4 +25,8 @@ class Event < ApplicationRecord
       invitations.create(guest_id: id)
     end
   end
+
+  def as_json(options={})
+    super(only: [:title, :location, :start_at, :end_at, :description])
+  end
 end

@@ -1,0 +1,11 @@
+<%# This will not be used since "format.json { render json: @events }" in the controller already does all the work %>
+
+<%= @events.each do |event| %>
+  {
+    title: <%= event.title %>
+    location: <%= event.location %>
+    start_at: <%= event.start_at %>
+    end_at: <%= event.end_at %>
+    description: <%= event.description %>
+  }
+<% end %>

@@ -5,6 +5,11 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all.order(:start_at).reverse_order
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @events }
+    end
   end
 
   def show
